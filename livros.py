@@ -3,6 +3,13 @@
 from db import conectar
 
 lista = []
+resposta = input("Selecione abaixo as opções do que gostaria de fazer:\n 1- Adicionar um livro\n 2- Deletar um livro\n")
+def escolha():
+    if resposta =="1":
+        inserir_livros(lista)
+    else:
+        livros_delete()    
+
 def inserir_livros(lista):
     nome = input("Escreva abaixo o nome do seu livro preferido:\nNome do livro:")
     conn = conectar()
