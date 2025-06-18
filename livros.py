@@ -3,12 +3,14 @@
 from db import conectar
 
 lista = []
-resposta = input("Selecione abaixo as opções do que gostaria de fazer:\n 1- Adicionar um livro\n 2- Deletar um livro\n")
+resposta = input("Selecione abaixo as opções do que gostaria de fazer:\n1- Adicionar um livro\n2- Atualizar um livro\n3- Deletar um livro\nResposta:")
 def escolha():
     if resposta =="1":
         inserir_livros(lista)
+    elif resposta == "2":
+        livros_update()    
     else:
-        livros_delete()    
+        livros_delete()                
 
 def inserir_livros(lista):
     nome = input("Escreva abaixo o nome do seu livro preferido:\nNome do livro:")
@@ -57,4 +59,25 @@ def livros_delete():
 
     finally:
         conn.close()
-carregar_livros(lista)
+    carregar_livros(lista)
+
+# update
+
+def livros_update():
+    nome_atual = input("Digite o nome do livro que gostaria de atualizar:\n")
+    nome_update = input("Digite o novo nome:\n")
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM livros WHERE nome=?',(nome_atual,))
+    encontrado = cursor.fetchone()
+    if encontrado:
+        cursor.execute('UPDATE livros SET nome=? WHERE nome=?',(nome_update, nome_atual))
+        cursor.commit()
+        cursor.close()
+        print("Livro atualizado com sucesso!")
+    else:
+        print("Esse livro não existe, por favor tente novamente.")    
+
+    carregar_livros(lista)
+    
+
