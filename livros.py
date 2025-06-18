@@ -59,7 +59,7 @@ def livros_delete():
 
     finally:
         conn.close()
-    carregar_livros(lista)
+carregar_livros(lista)
 
 # update
 
@@ -68,16 +68,13 @@ def livros_update():
     nome_update = input("Digite o novo nome:\n")
     conn = conectar()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM livros WHERE nome=?',(nome_atual,))
-    encontrado = cursor.fetchone()
-    if encontrado:
-        cursor.execute('UPDATE livros SET nome=? WHERE nome=?',(nome_update, nome_atual))
-        cursor.commit()
-        cursor.close()
+    # cursor.execute('SELECT * FROM livros WHERE nome=?',(nome_atual,))
+    # encontrado = cursor.fetchone()
+    # if encontrado:
+    cursor.execute('UPDATE livros SET nome=? WHERE nome=?',(nome_update, nome_atual))
+    if cursor.rowcount > 0:
         print("Livro atualizado com sucesso!")
     else:
-        print("Esse livro não existe, por favor tente novamente.")    
-
-    carregar_livros(lista)
-    
+        print("Livro não encontrado.")    
+carregar_livros(lista)    
 
