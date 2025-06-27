@@ -1,6 +1,6 @@
 Olá, seja bem vindo (a):
 
-===================== 📚 Biblioteca Py =======================
+================= 📚 Biblioteca Py ================
 
 Este sistema é bem simples, funciona no CLI ou terminal por linha de comando. 
 Por ser um CRUD, funciona muito bem para o aprendizado de comandos SQL no Python.
