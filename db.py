@@ -11,7 +11,8 @@ def criar_tabelas():
     cursor.execute("""
                    CREATE TABLE IF NOT EXISTS livros(
                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   nome TEXT NOT NULL
+                   nome TEXT NOT NULL,
+                   autor TEXT NOT NULL
                    );
             """)
     
