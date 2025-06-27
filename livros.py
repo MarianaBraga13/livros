@@ -20,7 +20,7 @@ def carregar_livros(lista):
     cursor.execute('SELECT * FROM livros')
     cadastrados = cursor.fetchall()
     if cadastrados:
-        print("\n============= Biblioteca Py ===========\n")
+        print("\n============= 📚 Biblioteca Py ===============\n")
         print("Seguem os livros cadastrados até o momento:\n")
         for livro in cadastrados:
             lista.append(f"{livro[0]} - {livro[1]}")            

@@ -7,7 +7,7 @@ def menu():
     
     while True:
         resposta = input(
-            "\n============= Biblioteca Py ===========\n"
+            "\n============= 📚 Biblioteca Py ===========\n"
             "1 - Adicionar um livro\n" 
             "2 - Atualizar um livro\n" 
             "3 - Deletar um livro\n" 
