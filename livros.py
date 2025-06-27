@@ -21,7 +21,7 @@ def carregar_livros(lista):
     cadastrados = cursor.fetchall()
     if cadastrados:
         print("\n============= Biblioteca Py ===========\n")
-        print(f"Seguem os livros cadastrados até o momento:\n")
+        print("Seguem os livros cadastrados até o momento:\n")
         for livro in cadastrados:
             lista.append(f"{livro[0]} - {livro[1]}")            
             print(livro)
@@ -56,15 +56,13 @@ def livros_delete():
 
 def livros_update():
     carregar_livros([])
-    nome_atual = input("Digite o nome do livro que gostaria de atualizar:\n").strip()
+    id = int(input("\nDigite o código ID do livro que gostaria de atualizar:\n").strip())
     nome_update = input("Digite o novo nome:\n").strip()
-    autor_update = input("Digite o nome do autor (a):\n").strip()
+    autor_update = input("Confirme o nome do autor:\n").strip()
     conn = conectar()
     cursor = conn.cursor()
-    # cursor.execute('SELECT * FROM livros WHERE nome=?',(nome_atual,))
-    # encontrado = cursor.fetchone()
-    # if encontrado:
-    cursor.execute('UPDATE livros SET nome=? and autor=? WHERE nome=? autor=?',(nome_update, nome_atual, autor_update))
+    cursor.execute('UPDATE livros SET nome=?, autor=? WHERE id=?',
+    (nome_update , autor_update , id))
     if cursor.rowcount > 0:
         print("Livro atualizado com sucesso!")
     else:
